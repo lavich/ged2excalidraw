@@ -1,8 +1,8 @@
 import * as fs from 'fs';
-import { parseGedcom } from './gedcom-parser';
-import { assignGenerations } from './generations';
-import { layoutTree } from './layout';
-import { createExcalidraw } from './excalidraw';
+import { parseGedcom } from '../shared/gedcom-parser';
+import { assignGenerations } from '../shared/generations';
+import { layoutTree } from '../shared/layout';
+import { createExcalidraw } from '../shared/excalidraw';
 
 function convert(inputFile: string, outputFile?: string): string {
   if (!outputFile) {
@@ -10,7 +10,8 @@ function convert(inputFile: string, outputFile?: string): string {
   }
 
   console.log(`Parsing ${inputFile}...`);
-  const { individuals, families } = parseGedcom(inputFile);
+  const content = fs.readFileSync(inputFile, 'utf-8');
+  const { individuals, families } = parseGedcom(content);
   console.log(`  ${individuals.size} individuals, ${families.size} families`);
 
   console.log('Computing generations...');

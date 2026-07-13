@@ -1,4 +1,3 @@
-import * as crypto from 'crypto';
 import { Individual, Family, shortLabel, lifeDates } from './models';
 
 const CARD_W = 180;
@@ -22,7 +21,9 @@ const AVATAR_COLORS: Record<string, string> = {
 };
 
 function makeId(): string {
-  return crypto.randomBytes(10).toString('hex');
+  const bytes = new Uint8Array(10);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
 }
 
 export function createExcalidraw(

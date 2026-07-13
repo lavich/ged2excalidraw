@@ -2,3 +2,4 @@ node_modules/
 dist/
 *.ged
 *.excalidraw
+dist-web/

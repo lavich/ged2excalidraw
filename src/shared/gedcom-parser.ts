@@ -1,7 +1,6 @@
-import * as fs from 'fs';
 import { Individual, Family, createIndividual, createFamily } from './models';
 
-export function parseGedcom(filepath: string): { individuals: Map<string, Individual>; families: Map<string, Family> } {
+export function parseGedcom(content: string): { individuals: Map<string, Individual>; families: Map<string, Family> } {
   const individuals = new Map<string, Individual>();
   const families = new Map<string, Family>();
 
@@ -10,7 +9,7 @@ export function parseGedcom(filepath: string): { individuals: Map<string, Indivi
   let currentSubTag: string | null = null;
 
   const regex = /^(\d+)\s+(@\w+@)?\s*(\w+)\s*(.*)?$/;
-  const lines = fs.readFileSync(filepath, 'utf-8').split(/\r?\n/);
+  const lines = content.split(/\r?\n/);
 
   for (const line of lines) {
     if (!line.trim()) continue;
