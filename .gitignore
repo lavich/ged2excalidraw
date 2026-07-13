@@ -3,3 +3,4 @@ dist/
 *.ged
 *.excalidraw
 dist-web/
+dist/

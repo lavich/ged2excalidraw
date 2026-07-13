@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { FileUpload } from './FileUpload';
 import { ExcalidrawView } from './ExcalidrawView';
-import { parseGedcom } from '../../src/shared/gedcom-parser';
-import { assignGenerations } from '../../src/shared/generations';
-import { layoutTree } from '../../src/shared/layout';
-import { createExcalidraw } from '../../src/shared/excalidraw';
+import { parseGedcom } from './shared/gedcom-parser';
+import { assignGenerations } from './shared/generations';
+import { layoutTree } from './shared/layout';
+import { createExcalidraw } from './shared/excalidraw';
 
 type State =
   | { status: 'idle' }
